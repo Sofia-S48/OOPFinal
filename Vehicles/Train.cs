@@ -18,7 +18,7 @@ namespace VehicleManagementSystem.Vehicles
 
         public override double CalculateTax()
         {
-            return Price * 0;
+            return Price * 0.05;
         }
     }
 }
