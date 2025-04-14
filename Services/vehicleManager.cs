@@ -5,7 +5,7 @@ namespace VehicleManagementSystem.Services
 {
     class VehicleManager
     {
-        private Vehicle[] vehicles;
+        private Vehicle?[] vehicles;
         private int vehicleCount;
 
         public VehicleManager()

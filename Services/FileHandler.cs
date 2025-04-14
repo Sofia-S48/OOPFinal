@@ -6,53 +6,65 @@ namespace VehicleManagementSystem.Services
 {
     class FileHandler
     {
-        private string path = "vehicleManagement.txt";
+        private string path = "vehicles.txt";
         public void Save(Vehicle[] vehicles)
         {
-            using (StreamWriter write = new StreamWriter (path))
+            using (StreamWriter writer = new StreamWriter (path))
             {
                 foreach(object vehicle in vehicles)
                 {
-                    writer.Write($"{vehicle.VehicleType},");
-                    writer.Write($"{vehicle.Name},");
-                    writer.Write($"{vehicle.Price},");
-                    writer.Write($"{vehicle.Speed}.");
+                    Vehicle baseVehicle = vehicle;
+
+                    writer.Write($"{baseVehicle.VehicleType},");
+                    writer.Write($"{baseVehicle.Name},");
+                    writer.Write($"{baseVehicle.Price},");
+                    writer.Write($"{baseVehicle.Speed}.");
                     if(vehicle.GetType() == typeof(Airplane) )
                     {
-                        writer.Write($"{vehicle.Altitude}");
+                        Airplane airplane = (Airplane)vehicle;
+                        writer.Write($"{airplane.Altitude}");
                     }
                     else if (vehicle.GetType() == typeof(Boat))
                     {
-                        writer.Write($"{vehicle.SeatingCapacity}");
+                        Boat boat = (Boat)vehicle;
+                        writer.Write($"{boat.SeatingCapacity}");
                     }
                     else if (vehicle.GetType() == typeof(Car))
                     {
-                        writer.Write($"{vehicle.model}, {vehicle.HorsePower}");
+                        Car car = (Car)vehicle;
+                        writer.Write($"{car.Model}, {car.HorsePower}");
                     }
                     else if (vehicle.GetType() == typeof(CargoAirplane))
                     {
-                        writer.Write($"{vehicle.CargoCapacity}");
+                        CargoAirplane cargo = (CargoAirplane)vehicle;
+                        writer.Write($"{cargo.CargoCapacity}");
                     }
                     else if (vehicle.GetType() == typeof(LuxuryYacht))
                     {
-                        writer.Write($"{vehicle.Helipad}");
+                        LuxuryYacht yacht = (LuxuryYacht)vehicle;
+                        writer.Write($"{yacht.Helipad}");
                     }
                     else if (vehicle.GetType() == typeof(RaceCar))
                     {
-                        writer.Write($"{vehicle.TurboBoost}");
+                        RaceCar race = (RaceCar)vehicle;
+                        writer.Write($"{race.TurboBoost}");
                     }
                     else if (vehicle.GetType() == typeof(Train))
                     {
-                        writer.Write($"{vehicle.Units}");
+                        Train train = (Train)vehicle;
+                        writer.Write($"{train.Units}");
                     }
                     else if (vehicle.GetType() == typeof(Truck))
                     {
-                        writer.Write($"{vehicle.LoadCapacity}");
+                        Truck truck = (Truck)vehicle;
+                        writer.Write($"{truck.LoadCapacity}");
                     }
                     writer.WriteLine();
                 }
             }
             Console.WriteLine("Vehicles saved.");
         }
+
+
     }
 }
