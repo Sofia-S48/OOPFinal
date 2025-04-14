@@ -6,7 +6,7 @@ namespace VehicleManagementSystem.IndependentClasses
  {
     public static double CalculateTax(Vehicle vehicle)
     {
-        return vehicle.Price * 0.1;
+        return vehicle.CalculateTax();
     }
  }   
 }

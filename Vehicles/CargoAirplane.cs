@@ -2,7 +2,7 @@ namespace VehicleManagementSystem.Vehicles
 {
     class CargoAirplane : Airplane
     {
-        public double cargoCapacity;
+        private double cargoCapacity;
         public double CargoCapacity
         {
             get{return cargoCapacity;}

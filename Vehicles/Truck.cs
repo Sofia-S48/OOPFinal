@@ -2,11 +2,11 @@ namespace VehicleManagementSystem.Vehicles
 {
     class Truck : Vehicle
     {
-        public double loadCapacity { get; set; }
+        public double LoadCapacity { get; set; }
 
         public Truck(string name, double price, double speed, string vehicleType, double loadCapacity) : base(name, price, speed, vehicleType)
         {
-            this.loadCapacity = loadCapacity;
+            LoadCapacity = loadCapacity;
         }
         public override void DisplayInfo()
         {
