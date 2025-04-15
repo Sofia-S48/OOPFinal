@@ -1,0 +1,15 @@
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.AssemblyInfoInputs.cache
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.AssemblyInfo.cs
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.csproj.CoreCompileInputs.cache
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.sourcelink.json
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/bin/Debug/net9.0/FinalProject
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/bin/Debug/net9.0/FinalProject.deps.json
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/bin/Debug/net9.0/FinalProject.runtimeconfig.json
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/bin/Debug/net9.0/FinalProject.dll
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/bin/Debug/net9.0/FinalProject.pdb
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.dll
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/refint/FinalProject.dll
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.pdb
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/FinalProject.genruntimeconfig.cache
+/Users/sofia/Library/Mobile Documents/com~apple~CloudDocs/School/ObjectOrientedPrograming/FinalProject/FinalProject/obj/Debug/net9.0/ref/FinalProject.dll

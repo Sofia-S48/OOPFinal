@@ -14,7 +14,7 @@ namespace VehicleManagementSystem.Vehicles
             Console.WriteLine($"Price: {Price}");
             Console.WriteLine($"Speed: {Speed}");
             Console.WriteLine($"Vehicle Type: {VehicleType}");
-            Console.WriteLine($"Load Capacity: {loadCapacity}");
+            Console.WriteLine($"Load Capacity: {LoadCapacity}");
         }
         public override double CalculateTax()
         {

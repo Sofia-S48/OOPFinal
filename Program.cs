@@ -9,14 +9,15 @@ using VehicleManagementSystem.Constants;
 using Microsoft.Win32.SafeHandles;
 using System.Numerics;
 using Microsoft.VisualBasic;
+using System.ComponentModel;
 
 namespace VehicleManagementSystem
 {
 class Program
 {
-    static void showStats(VehicleManager manager)
+    static void showStats()
     {
-        Vehicle[] vehicles = manager.GetVehicles();
+        Vehicle[] vehicles = VehicleManager.GetVehicles();
 
         Console.WriteLine($"Average Price: {VehicleStatistics.getAveragePrice(vehicles)}");
         var fastest = VehicleStatistics.SortFastest(vehicles);
@@ -29,50 +30,50 @@ class Program
         }
     }
 
-    static void AddVehicles(VehicleManager manager)
+    static void AddVehicles()
     {
         Console.WriteLine("Vehicle types: Airplane, Boat, Car, CargoAirplane, LuxuryYacht, RaceCar, Train, Truck.");
         Console.WriteLine("Enter Vehicle type: ");
-        string type = Console.ReadLine();
+        string type = (Console.ReadLine() ?? "").ToLower();
 
         Console.WriteLine("Enter Vehicle Name: ");
-        string name = Console.ReadLine();
+        string name = (Console.ReadLine() ?? "");
 
         Console.WriteLine("Enter Vehicle Price: ");
-        double price = Convert.ToDouble(Console.ReadLine());
+        double price = Convert.ToDouble((Console.ReadLine() ?? ""));
 
         Console.WriteLine("Enter Vehicle Speed: ");
-        double speed = Convert.ToDouble(Console.ReadLine());
+        double speed = Convert.ToDouble((Console.ReadLine() ?? ""));
 
         // Type specific questions:
 
-        Vehicle newVehicle = null;
+        Vehicle? newVehicle = null;
 
         switch (type)
         {
-            case "Airplane":
+            case "airplane":
                 Console.WriteLine("Altitude: ");
-                double alt = Convert.ToDouble(Console.ReadLine());
+                double alt = Convert.ToDouble((Console.ReadLine() ?? ""));
                 newVehicle = new Airplane(name, price, speed, type, alt);
             break;
-            case "Boat":
+            case "boat":
                 Console.WriteLine("Boat's seating capacity: ");
-                int seating = Convert.ToInt32(Console.ReadLine());
+                int seating = Convert.ToInt32((Console.ReadLine() ?? ""));
                 newVehicle = new Boat(name, price, speed, type, seating);
             break;
             case "car":
                 Console.WriteLine("Enter car Model: ");
-                string model = Console.ReadLine();
+                string model = (Console.ReadLine() ?? "");
                 Console.WriteLine("Enter car Horsepower: ");
-                int horsepower = Convert.ToInt32(Console.ReadLine());
+                int horsepower = Convert.ToInt32((Console.ReadLine() ?? ""));
                 newVehicle = new Car(name, price, speed, type, model, horsepower);
             break;
-            case "CargoAirplane":
+            case "cargoairplane":
                 Console.WriteLine("Altitude: ");
-                double altC = Convert.ToDouble(Console.ReadLine());
+                double altC = Convert.ToDouble((Console.ReadLine() ?? ""));
                 try{
                 Console.WriteLine("Plane's cargo capacity: ");
-                double cargo = Convert.ToDouble(Console.ReadLine());
+                double cargo = Convert.ToDouble((Console.ReadLine() ?? ""));
                 newVehicle = new CargoAirplane(name, price, speed, type, altC, cargo);
                 }
                 catch(VehicleException ex)
@@ -84,50 +85,58 @@ class Program
                     Console.WriteLine($"{ex.Message}");
                 }
             break;
-            case "LuxuryYacht":
+            case "luxuryyacht":
                 Console.WriteLine("Luxury Yacht seating capacity: ");
-                int yachtSeating = Convert.ToInt32(Console.ReadLine());
+                int yachtSeating = Convert.ToInt32((Console.ReadLine() ?? ""));
 
                 Console.WriteLine("Helipad('yes' or 'no'): ");
-                string ans = Console.ReadLine().ToLower();
+                string ans = (Console.ReadLine() ?? "").ToLower();
                 bool helipad = ans == "yes";
                 newVehicle = new LuxuryYacht(name, price, speed, type, yachtSeating, helipad);
             break;
-            case "RaceCar":
+            case "racecar":
                 Console.WriteLine("Enter car Model: ");
-                string modelR = Console.ReadLine();
+                string modelR = (Console.ReadLine() ?? "");
 
                 Console.WriteLine("Enter car Horsepower: ");
-                int horsepowerR = Convert.ToInt32(Console.ReadLine());
+                int horsepowerR = Convert.ToInt32((Console.ReadLine() ?? ""));
 
                 Console.WriteLine("Turbo Boost ('yes' or 'no'): ");
-                string ansR = Console.ReadLine().ToLower();
+                string ansR = (Console.ReadLine() ?? "").ToLower();
                 bool turbo = ansR == "yes";
                 newVehicle = new RaceCar(name, price, speed, type, modelR, horsepowerR, turbo);
             break;
-            case "Train":
+            case "train":
                 Console.WriteLine("Units: ");
-                int units = Convert.ToInt32(Console.ReadLine());
+                int units = Convert.ToInt32((Console.ReadLine() ?? ""));
                 newVehicle = new Train(name, price, speed, type, units);
             break;
-            case "Truck":
+            case "truck":
                 Console.WriteLine("Truck load capacity: ");
-                double loadC = Convert.ToDouble(Console.ReadLine());
+                double loadC = Convert.ToDouble((Console.ReadLine() ?? ""));
                 newVehicle = new Truck(name, price, speed, type, loadC);
             break;
+            default:
+                Console.WriteLine("Error occured. Invalid type.");
+            break;
+
+        }
+        if(newVehicle != null)
+        {
+        VehicleManager.AddVehicle(newVehicle);
         }
 
     }
 
-    static void SortMenu(VehicleManager manager)
+    static void SortMenu()
     {
         Console.WriteLine("\n===== Sort Options =====");
         Console.WriteLine("1. By Price");
         Console.WriteLine("2. By Speed");
         Console.WriteLine("3. By Type");
-        string answ = Console.ReadLine();
+        string answ = (Console.ReadLine() ?? "");
 
-        Vehicle[] vehicles = manager.GetVehicles();
+        Vehicle[] vehicles = VehicleManager.GetVehicles();
 
         switch(answ)
         {
@@ -152,7 +161,6 @@ class Program
 
     static void Main(string[] args)
     {
-        VehicleManager vehicleManager = new();
         FileHandler fileHandler = new FileHandler();
         
         while (true)
@@ -169,7 +177,7 @@ class Program
             Console.WriteLine("7.Exit");
             Console.WriteLine("Please enter your choice: ");
 
-            if(!int.TryParse(Console.ReadLine(), out int choice))
+            if(!int.TryParse((Console.ReadLine() ?? ""), out int choice))
             {
                 Console.WriteLine("Invalid input. Please try again.");
                 continue;
@@ -178,26 +186,26 @@ class Program
             switch (choice)
             {
                 case 1:
-                    AddVehicles(vehicleManager);
+                    AddVehicles();
                 break;
                 case 2:
-                    vehicleManager.DisplayVehicles();
+                    VehicleManager.DisplayVehicles();
                 break;
                 case 3:
-                    SortMenu(vehicleManager);
+                    SortMenu();
                 break;
                 case 4:
-                    showStats(vehicleManager);
+                    showStats();
                 break;
                 case 5:
-                    fileHandler.Save(vehicleManager.GetVehicles());
+                    fileHandler.Save(VehicleManager.GetVehicles());
                     Console.WriteLine("Vehicles saved");
                 break;
                 case 6:
                     Vehicle[] loadedVehicles = fileHandler.LoadFromFile();
                     foreach(var v in loadedVehicles)
                     {
-                        vehicleManager.AddVehicle(v);
+                        VehicleManager.AddVehicle(v);
                     }
                     Console.WriteLine("Vehicles loaded to file.");
                 break;

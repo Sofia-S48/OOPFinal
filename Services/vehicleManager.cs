@@ -3,17 +3,13 @@ using VehicleManagementSystem.Vehicles;
 
 namespace VehicleManagementSystem.Services
 {
-    class VehicleManager
+    static class VehicleManager
     {
-        private Vehicle?[] vehicles;
-        private int vehicleCount;
+        private static Vehicle?[] vehicles = new Vehicle [100];
+        private static int vehicleCount = 0;
 
-        public VehicleManager()
-        {
-            vehicles = new Vehicle[100];
-            vehicleCount = 0;
-        }
-        public void RemoveVehicle(int index)
+       
+        public static void RemoveVehicle(int index)
         {
             if(index < 0 && index >= vehicleCount)
             {
@@ -29,7 +25,7 @@ namespace VehicleManagementSystem.Services
             vehicles[ vehicleCount - 1] = null;
             vehicleCount --;
         }
-        public void AddVehicle(Vehicle vehicle)
+        public static void AddVehicle(Vehicle vehicle)
         {
             if (vehicleCount >= vehicles.Length)
             {
@@ -40,7 +36,7 @@ namespace VehicleManagementSystem.Services
             vehicleCount++;
             
         }
-        public void DisplayVehicles()
+        public static void DisplayVehicles()
         {
             if (vehicleCount == 0)
             {
@@ -55,7 +51,7 @@ namespace VehicleManagementSystem.Services
             }
 
         }
-        public Vehicle[] GetVehicles()
+        public static Vehicle[] GetVehicles()
         {
             Vehicle[] currentVehicles = new Vehicle[vehicleCount];
     
