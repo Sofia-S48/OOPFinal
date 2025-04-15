@@ -16,7 +16,7 @@ namespace VehicleManagementSystem.Vehicles
                 cargoCapacity = value;
             }
         }
-        public CargoAirplane(string name, double price, double speed, string vehicleType, double altitude, int cargoCapacity) : base(name, price, speed, vehicleType, altitude)  
+        public CargoAirplane(string name, double price, double speed, string vehicleType, double altitude, double cargoCapacity) : base(name, price, speed, vehicleType, altitude)  
         {
             CargoCapacity = cargoCapacity;
         }

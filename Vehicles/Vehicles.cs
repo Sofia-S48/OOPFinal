@@ -23,11 +23,6 @@ namespace VehicleManagementSystem.Vehicles
             Speed = speed;
             VehicleType = vehicleType;
         }
-        public virtual InfoSave()
-        {
-            
-        }
-
         public virtual void DisplayInfo()
         {
             Console.WriteLine($"Name: {Name}");
