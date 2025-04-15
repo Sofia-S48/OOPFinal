@@ -7,7 +7,7 @@ namespace VehicleManagementSystem.IndependentClasses
 {
     class VehicleComparer()
     {
-        public void sortByPrice(Vehicle[] vehicles)
+        public void SortByPrice(Vehicle[] vehicles)
         {
             int n = vehicles.Length;
 
@@ -26,7 +26,7 @@ namespace VehicleManagementSystem.IndependentClasses
 
         }
 
-        public void sortBySpeed(Vehicle[] vehicles)
+        public void SortBySpeed(Vehicle[] vehicles)
         {
             int n = vehicles.Length;
 
@@ -45,7 +45,7 @@ namespace VehicleManagementSystem.IndependentClasses
 
         }
 
-        public void sortByType(Vehicle[] vehicles)
+        public void SortByType(Vehicle[] vehicles)
         {
             int n = vehicles.Length;
 
@@ -53,7 +53,12 @@ namespace VehicleManagementSystem.IndependentClasses
             {
                 for(int j = 0; j < n -i -1; j++)
                 {
-                    
+                    if (string.Compare(vehicles[j].VehicleType, vehicles[j+1].VehicleType) > 0)
+                    {
+                        Vehicle tempT = vehicles[j];
+                        vehicles[j] = vehicles[j +1];
+                        vehicles[j+1] = tempT;
+                    }
                 }
             }
 

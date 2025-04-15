@@ -1,4 +1,4 @@
-﻿
+﻿using VehicleManagementSystem.Exceptions;
 using System;
 
 namespace VehicleManagementSystem.Vehicles

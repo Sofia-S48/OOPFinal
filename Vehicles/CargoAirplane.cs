@@ -1,3 +1,4 @@
+using VehicleManagementSystem.Exceptions;
 namespace VehicleManagementSystem.Vehicles
 {
     class CargoAirplane : Airplane

@@ -1,6 +1,7 @@
 using System.IO;
 using System.Collections.Generic;
 using VehicleManagementSystem.Vehicles;
+using System.Diagnostics;
 
 namespace VehicleManagementSystem.Services
 {
@@ -11,7 +12,7 @@ namespace VehicleManagementSystem.Services
         {
             using (StreamWriter writer = new StreamWriter (path))
             {
-                foreach(object vehicle in vehicles)
+                foreach(Vehicle vehicle in vehicles)
                 {
                     Vehicle baseVehicle = vehicle;
 
@@ -63,6 +64,99 @@ namespace VehicleManagementSystem.Services
                 }
             }
             Console.WriteLine("Vehicles saved.");
+        }
+
+        public Vehicle[] LoadFromFile()
+        {
+            if(!File.Exists(path))
+            {
+                Console.WriteLine("No saved Vehicles");
+                return new Vehicle[0];
+            }
+
+            List<Vehicle> vehicleList = new List<Vehicle>();
+
+            foreach(string line in File.ReadAllLines(path))
+            {
+                string[] part = line.Split(',');
+
+                string type = part[0];
+                string name = part[1];
+                double price = Convert.ToDouble(part[2]);
+                int speed = Convert.ToInt32(part[3]);
+
+                switch (type)
+                {
+                    case "Airplane":
+                    {
+                        double altitude = Convert.ToDouble(part[4]);
+                        vehicleList.Add(new Airplane(name, price, speed, type, altitude));
+                        break;
+                    }
+
+                    case "Boat":
+                    {
+                        int seating = Convert.ToInt32(part[4]);
+                        vehicleList.Add(new Boat(name, price, speed, type, seating));
+                    break;
+                    }
+
+                    case "Car":
+                    {
+                        string model = part[4];
+                        int horsepower = Convert.ToInt32(part[5]);
+                        vehicleList.Add(new Car (name, price, speed, type, model, horsepower));
+                    break;
+                    }
+
+                    case "CargoAirplane":
+                    {
+                        double altitudeCA = Convert.ToDouble(part[4]);
+                        int cargo = Convert.ToInt32(part[5]);
+                        vehicleList.Add(new CargoAirplane(name, price, speed, type, altitudeCA, cargo));
+                    break;
+                    }
+
+                    case "LuxuryYacht":
+                    {
+                        int seatingCapacity = Convert.ToInt32(part[4]);
+                        bool helipad = Convert.ToBoolean(part[5]);
+                        vehicleList.Add(new LuxuryYacht(name, price, speed, type, seatingCapacity, helipad));
+                    break;
+                    }
+
+                    case "RaceCar":
+                    {
+                        string model = part[4];
+                        int horsePower = Convert.ToInt32(part[5]);
+                        bool turbo = Convert.ToBoolean(part[6]);
+                        vehicleList.Add(new RaceCar(name, price, speed, type, model, horsePower, turbo));
+                    break;
+                    }
+
+                    case "Train":
+                    {
+                        int units = Convert.ToInt32(part[4]);
+                        vehicleList.Add(new Train(name, price, speed, type, units));
+                    break;
+                    }
+
+                    case "Truck":
+                    {
+                        double load = Convert.ToDouble(part[4]);
+                        vehicleList.Add(new Truck(name, price, speed, type, load));
+                    break;
+                    }
+
+                    default:
+                    {
+                        Console.WriteLine("Vehicle type not found:" + type);
+                    break;
+                    }
+
+                }
+            }
+            return vehicleList.ToArray();
         }
 
 

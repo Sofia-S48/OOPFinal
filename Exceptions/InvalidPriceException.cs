@@ -1,10 +1,9 @@
 namespace VehicleManagementSystem.Exceptions
 {
-    public class InvalidPriceException : VehicleException
+    class InvalidPriceException : Exception
     {
-        public InvalidPriceException() : base("Price cant be negative")
-        {
-            
-        }
+        public InvalidPriceException() : base("Price is invalid") { }
+
+        public InvalidPriceException(string message) : base(message) { }
     }
 }
