@@ -10,17 +10,19 @@ namespace VehicleManagementSystem.IndependentClasses
     {
         public static double getAveragePrice(Vehicle[] vehicles)
         {
+            if (vehicles.Length == 0) return 0;
             return vehicles.Average(v => v.Price);
         }
         public static Vehicle SortFastest(Vehicle[]vehicles)
         {
+            if (vehicles.Length == 0) return null;
             VehicleComparer.SortBySpeed(vehicles);
             return vehicles[^1];
         }
 
         public static int CountByType(Vehicle[] vehicles, VehicleConstants.VehicleTypes type)
         {
-            return vehicles.Count(v => v.VehicleType == type);
+            return vehicles.Count(v => v.VehicleType == type.ToString());
         }
     }
 }

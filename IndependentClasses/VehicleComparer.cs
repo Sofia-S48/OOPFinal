@@ -5,9 +5,9 @@ using VehicleManagementSystem.Vehicles;
 
 namespace VehicleManagementSystem.IndependentClasses
 {
-    class VehicleComparer()
+    class VehicleComparer
     {
-        public void SortByPrice(Vehicle[] vehicles)
+        public static void SortByPrice(Vehicle[] vehicles)
         {
             int n = vehicles.Length;
 
@@ -26,7 +26,7 @@ namespace VehicleManagementSystem.IndependentClasses
 
         }
 
-        public void SortBySpeed(Vehicle[] vehicles)
+        public static void SortBySpeed(Vehicle[] vehicles)
         {
             int n = vehicles.Length;
 
@@ -45,7 +45,7 @@ namespace VehicleManagementSystem.IndependentClasses
 
         }
 
-        public void SortByType(Vehicle[] vehicles)
+        public static void SortByType(Vehicle[] vehicles)
         {
             int n = vehicles.Length;
 
